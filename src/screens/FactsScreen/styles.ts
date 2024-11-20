@@ -59,6 +59,15 @@ const styles = (top: number, bottom: number) =>
       backgroundColor: 'white',
       padding: 16,
     },
+    errroText: {
+      color: 'red',
+      textAlign: 'center',
+    },
+    errorLabel: {
+      fontSize: 10,
+      textAlign: 'center',
+      lineHeight: 14,
+    },
   });
 
 export default styles;

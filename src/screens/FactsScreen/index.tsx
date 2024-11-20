@@ -14,7 +14,7 @@ const FactsScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList, 'Home'>>();
   const screenStyle = styles(insents.top, insents.bottom);
-  const {data, isLoading, isRefetching, refetch} = useQuery('facts', () =>
+  const {data, isLoading, isError, isRefetching, refetch} = useQuery('facts', () =>
     getRandomFacts(),
   );
 
@@ -50,6 +50,14 @@ const FactsScreen = () => {
         showsVerticalScrollIndicator={false}
         refreshing={isRefetching}
         onRefresh={refetch}
+        ListHeaderComponent={() => (
+          isError && (
+            <>
+            <Text style={screenStyle.errroText}>Something went wrong!</Text>
+            <Text style={screenStyle.errorLabel}>{'(Pull, to ty again)'}</Text>
+            </>
+          )
+        )}
       />
       {isLoading && (
         <ActivityIndicator size={'large'} style={screenStyle.loader} />
